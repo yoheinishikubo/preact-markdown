@@ -8,7 +8,11 @@ function Markdown(props, opts) {
   opts = opts || {};
   var h = opts.h || preact.h;
   var markdown, markupOpts, markdownOpts;
-  if (typeof props === 'string') {
+  
+  if (props.children.length > 0){
+    markdown = props.children.join('\n');
+    props = {};
+  } else if (typeof props === 'string') {
     markdown = props;
     props = {};
   } else if (props && typeof props.markdown === 'string') {
